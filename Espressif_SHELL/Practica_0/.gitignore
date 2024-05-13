@@ -1,0 +1,21 @@
+# Ignorar todos los archivos en todas las carpetas y subcarpetas
+*
+
+# No ignorar el GITIGNORE
+!.gitignore
+
+# No ignorar todos estos archivos
+!CMakeLists.txt
+!Makefile
+!Kconfig.projbuild
+!README.md
+!sdkconfig
+!sdkconfig.*
+!*.c
+!*.h
+
+# No ignorar archivos incluso si los archivos anteriores estan en sub carpetas
+!*/
+
+# Ignorar la carpeta BUILD
+build
