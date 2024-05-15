@@ -35,22 +35,25 @@ esp_mqtt_client_handle_t MQTT_getClient(void);
 
 // parámetros Wifi
 extern wifi_ap_record_t wifidata;
-
+extTopic ext_func = NULL;
 /*******************************************************************************
 MQTT_subscribe(): Subscripción al topic especificado.
 *******************************************************************************/
-void MQTT_subscribe(const char * topic){
-  esp_mqtt_client_subscribe(client, topic, 0);
+void MQTT_subscribe(const char * topic, extTopic func){
+	if (ext_func == NULL) {
+		  ext_func = func;
+	}
+	esp_mqtt_client_subscribe(client, topic, 0);
 }
 
 /*******************************************************************************
  MQTT_publish(): publica mensaje en el topic especificado.
 *******************************************************************************/
-void MQTT_publish(const char * topic, const char * mensaje) {
+void MQTT_publish(const char * topic, const char * mensaje, int qos) {
 
   /* CON PUPLISH *********************************************************
   esp_mqtt_client_publish(client, topic, data, len, qos, retain) */
-  esp_mqtt_client_publish(client, topic, mensaje, 0, 0, 0);
+  esp_mqtt_client_publish(client, topic, mensaje, 0, qos, 0);
 
   /* CON ENQUEUE ********************************************************
   esp_mqtt_client_enqueue(client, topic, data, len, qos, retain, store);
@@ -64,14 +67,14 @@ void MQTT_publish(const char * topic, const char * mensaje) {
  void MQTT_processTopic(const char * topic, const char * data){
 
    /* Acciones a ejecutar para cada topic recibido */
+	 ext_func(topic, data);
+//   // Ingresar código aquí
+//	 if(strcmp("practica1/led", topic)==0) {
+//	       printf("MQTT: Mensaje recibido: %s\n", data);
+//	       IO_toggleLed();
+//	     }
 
-   // Ingresar código aquí
-	 if(strcmp("practica1/led", topic)==0) {
-	       printf("MQTT: Mensaje recibido: %s\n", data);
-	       IO_toggleLed();
-	     }
-
- }
+}
 
 
  /*******************************************************************************
