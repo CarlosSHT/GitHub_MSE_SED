@@ -13,3 +13,6 @@ Actividad de montaje de LDR y verificación de lecturas.
 	GPIO25 para la emisión PWM en Led Rojo.
  
 <img src="./imgs/fig1.png" alt="Texto alternativo" width="300">
+
+	2. Configuración y uso del ADC, se utiliza el GPIO34 (ADC1_6) en el cual se hace una lectura 
+	periodica de 250ms (4 Hz) y, así mismo, se imprime a traves del monitor serial el valor obtenido.
