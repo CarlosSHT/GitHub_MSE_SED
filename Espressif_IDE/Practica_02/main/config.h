@@ -23,5 +23,5 @@
 #define BLINK_GPIO CONFIG_BLINK_GPIO  // port 2 para NodeMcu-23S
 #define PWM_PORT 25          // puerto de salida de pwm
 
-
+#define SAMPLES_SIZE 1000
 #endif

@@ -4,8 +4,7 @@ Práctica 02 - MSE Curso: Sistemas Embebidos Distribuidos
 Alumno: Carlos Herrera Trujillo
 
 
-Actividad 1: Lectura del sensor
--------------------------------
+## Actividad 1: Lectura del sensor
 
 Actividad de montaje de LDR y verificación de lecturas.
 
@@ -23,5 +22,17 @@ periodica de 250ms (4 Hz) y, así mismo, se imprime a traves del monitor serial 
 
 <div style="display: flex; justify-content: center; align-items: center; ">
 	<img src="./imgs/fig3.png" alt="MonitorSerie" height="340">
-</div>
+</div><br>
 
+
+## Actividad 2: Grabación y reproducción
+
+Grabación del nivel establecido por el LDR (ADC1_6) y visualización por PWM (GPIO25), con un tiempo
+de muestreo de 20ms para 1000 muestras adquiridas.
+
+<div style="text-align: center;">
+  <video controls>
+    <source src="./imgs/Actividad_02.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de video.
+  </video>
+</div>

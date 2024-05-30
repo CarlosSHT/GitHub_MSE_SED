@@ -27,6 +27,9 @@
 static const char *TAG1 = "CRONO/TIMER";
 static const char *TAG2 = "CRONO/SNTP";
 
+extern volatile int samples[SAMPLES_SIZE];
+extern volatile int n;
+
 /********************************** TIMER *************************************/
 
 esp_timer_handle_t periodic_timer;
@@ -37,7 +40,12 @@ esp_timer_handle_t periodic_timer;
 static void CRONO_timerCallback(void* arg)
 {
    // Ingresar código aquí
-   
+	// Muestreo
+	if(n < SAMPLES_SIZE){
+	    samples[n] = IO_readAdc();
+	    IO_monitorStem(samples[n]);
+	    n++;
+	}
 }
 
 /*****************************************************************************

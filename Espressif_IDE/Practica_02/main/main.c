@@ -4,21 +4,11 @@
 #include <stdint.h>
 
 
-typedef enum
-{
-	state_Init = 0,
-	state_LDRread,
-	state_Off,
-	state_Updt,
-	state_Idle,
-}os_state;
-
-
-os_state fsm;
-
 const char *TAG = "MAIN";
-uint16_t data_LDR;
+uint16_t data;
 
+volatile int samples[SAMPLES_SIZE];
+volatile int n = 0;
 
 /*******************************************************************************
  Programa principal
@@ -27,30 +17,46 @@ uint16_t data_LDR;
 void app_main(void)
 {
   /* Inicializaciones */
+	printf("Inicializacion del sistema\n");
+	/* Inicialización del ADC */
+	IO_adcInit();
 
-  while(1){
-	  switch (fsm) {
-		case state_Init:
-			printf("Inicializacion del sistema\n");
-			/* Inicialización del ADC */
-			IO_adcInit();
-			data_LDR=0;
-			fsm = state_LDRread;
-			break;
+	/* Inicialización del GPIO */
+	IO_gpioInit();
 
-		case state_LDRread:
-//			fsm = state_LDRread;
+	/* Inicialización del PWM */
+	IO_pwmInit();
 
-			data_LDR = IO_readAdc();
-			printf("SENSOR: %i\n", data_LDR);
+	/* Inicialización del Timer */
+	CRONO_timerInit();
 
-			CRONO_delayMs(250);
-
-			break;
-		default:
-			break;
+	// Muestreo
+	CRONO_timerStart(20);
+	printf("GRABACIÓN INICIADA\n");
+	while(n < SAMPLES_SIZE){
+	    IO_toggleLed();
+	    CRONO_delayMs(500);
 	}
+	CRONO_timerStop();
+	printf("GRABACIÓN FINALIZADA\n");
 
-  }
+	// Intervalo de espera...
+	IO_monitorPause("Presione Enter para continuar...\n");
 
+	// Reproducción
+	printf("REPRODUCCIÓN INICIADA\n");
+	for(n = 0; n < SAMPLES_SIZE ; n++){
+	    IO_pwmSet(samples[n] / 4096.0 * 100);
+	    IO_monitorStem(samples[n]);
+	    CRONO_delayMs(20);
+	}
+	IO_pwmSet(0);
+	printf("REPRODUCCIÓN FINALIZADA\n");
+	n = 0;
+
+	while(1){
+	    // loop
+	    IO_toggleLed();
+	    CRONO_delayMs(250);
+	}
 }
