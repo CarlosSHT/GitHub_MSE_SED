@@ -30,9 +30,6 @@ periodica de 250ms (4 Hz) y, así mismo, se imprime a traves del monitor serial 
 Grabación del nivel establecido por el LDR (ADC1_6) y visualización por PWM (GPIO25), con un tiempo
 de muestreo de 20ms para 1000 muestras adquiridas.
 
-<div style="text-align: center;">
-  <video controls>
-    <source src="./imgs/Actividad_02.mp4" type="video/mp4">
-    Tu navegador no soporta la etiqueta de video.
-  </video>
-</div>
+https://github.com/CarlosSHT/GitHub_MSE_SED/raw/main/Espressif_IDE/Practica_02/imgs/Actividad_02.mp4
+
+https://github.com/CarlosSHT/GitHub_MSE_SED/assets/29582681/5803f55f-0acd-4603-8bdd-927b12173016
