@@ -39,22 +39,25 @@ esp_timer_handle_t periodic_timer;
 *******************************************************************************/
 static void CRONO_timerCallback(void* arg)
 {
+	extFunIRQ func = (extFunIRQ)arg;
    // Ingresar código aquí
 	// Muestreo
-	if(n < SAMPLES_SIZE){
-	    samples[n] = IO_readAdc();
-	    IO_monitorStem(samples[n]);
-	    n++;
-	}
+	func();
+//	if(n < SAMPLES_SIZE){
+//	    samples[n] = IO_readAdc();
+//	    IO_monitorStem(samples[n]);
+//	    n++;
+//	}
 }
 
 /*****************************************************************************
  CRONO_timerInit(): inicialización del temporizador de alta presición.
 *******************************************************************************/
-void CRONO_timerInit(){
+void CRONO_timerInit(void* arg){
 
   const esp_timer_create_args_t periodic_timer_args = {
           .callback = &CRONO_timerCallback,
+		  .arg = arg,
           /* name is optional, but may help identify the timer when debugging */
           .name = "periodic"
   };

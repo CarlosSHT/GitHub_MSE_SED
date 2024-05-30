@@ -6,9 +6,11 @@
 #ifndef CRONO_H
 #define CRONO_H
 
+typedef void (*extFunIRQ)(void);
+
 /* Prototipos */
 // Timers
-void CRONO_timerInit(void);
+void CRONO_timerInit(void* arg);
 void CRONO_timerStart(uint64_t);
 void CRONO_timerStop(void);
 
