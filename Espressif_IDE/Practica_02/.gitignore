@@ -19,5 +19,9 @@
 # No ignorar archivos incluso si los archivos anteriores estan en sub carpetas
 !*/
 
+# No ignorar carpetas llamadas imgs en cualquier lugar del proyecto
+!**/imgs/
+!**/imgs/**
+
 # Ignorar la carpeta BUILD
 build
