@@ -75,6 +75,10 @@ App y del programa en el Esp32 se establece el uso de un **QoS2**
 1.	El pulsador de la App “Muestreo LDR” realiza el inicio y finalización de la toma de muestras, 
 así mismo, el LED indicador en la App señala sus dos estados de medición.
 
+https://github.com/CarlosSHT/GitHub_MSE_SED/raw/main/Espressif_IDE/Practica_02/imgs/Entregable3_Punto1.mp4
+
+https://github.com/CarlosSHT/GitHub_MSE_SED/assets/29582681/38cb305a-82d0-4295-a3c8-6eaf3b5dc04b
+
 <div style="text-align: center;">
   <video width="600" controls>
     <source src="./imgs/Entregable3_Punto1.mp4" type="video/mp4">
@@ -84,6 +88,10 @@ así mismo, el LED indicador en la App señala sus dos estados de medición.
 
 2.	Control del brillo del LED Rojo en tiempo real con distintas posiciones configuradas en el Slider 
 de la App, así mismo, se visualiza la intensidad mientras se realiza capturas del valor del LDR.
+
+https://github.com/CarlosSHT/GitHub_MSE_SED/raw/main/Espressif_IDE/Practica_02/imgs/Entregable3_Punto2.mp4
+
+https://github.com/CarlosSHT/GitHub_MSE_SED/assets/29582681/22026153-44af-44a0-9759-b1e5d4b1b51f
 
 <div style="text-align: center;">
   <video width="600" controls>
@@ -95,6 +103,10 @@ de la App, así mismo, se visualiza la intensidad mientras se realiza capturas d
 3.	La curva obtenida en el Panel Line Graph con detención por botón y detención automática luego de 
 20 segundos. En el segundo paso se utilizó el script “subs_mensajePC2.sh” para grabar los valores del 
 sensor LDR recibidos.
+
+https://github.com/CarlosSHT/GitHub_MSE_SED/raw/main/Espressif_IDE/Practica_02/imgs/Entregable3_Punto3.mp4
+
+https://github.com/CarlosSHT/GitHub_MSE_SED/assets/29582681/152b4525-36e3-48a6-85d1-c39d140845c3
 
 <div style="text-align: center;">
   <video width="600" controls>
@@ -154,3 +166,4 @@ Por último, todos los archivos de la Práctica 2 se encuentran en el siguiente 
   
   https://github.com/CarlosSHT/GitHub_MSE_SED/blob/main/Espressif_IDE/Practica_02/README.md
 
+  https://github.com/CarlosSHT/GitHub_MSE_SED/tree/main/Ubuntu_VM/Practica_2__Sensores
