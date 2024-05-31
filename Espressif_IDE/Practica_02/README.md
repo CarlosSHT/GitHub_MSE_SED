@@ -31,6 +31,7 @@ Grabación del nivel establecido por el LDR (ADC1_6) y visualización por PWM (G
 de muestreo de 20ms para 1000 muestras adquiridas.
 
 https://github.com/CarlosSHT/GitHub_MSE_SED/raw/main/Espressif_IDE/Practica_02/imgs/Actividad_02.mp4
+
 https://github.com/CarlosSHT/GitHub_MSE_SED/assets/29582681/5803f55f-0acd-4603-8bdd-927b12173016
 
 <div style="text-align: center;">
