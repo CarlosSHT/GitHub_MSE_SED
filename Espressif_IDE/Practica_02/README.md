@@ -62,3 +62,95 @@ del LDR enviadas por el ESP32 (con el parámetro Max persistence en 100, aunque 
 un topic MQTT en el que se reciban las lecturas del LDR enviadas por el ESP32. Estos datos se 
 deben ir almacenando en un archivo CSV, donde la primer columna sea el instante de la muestreo 
 (en milisegundos) y la seguna columna el valor sensado por el LDR.
+
+---
+Para el uso del script bash subs_mensajePC2.sh se realizó la instalación del paquete de Ubuntu:
+
+`sudo apt-get install jq`
+
+Además, para asegurar de que el mensaje se publique una sola vez por parte de los controles de la 
+App y del programa en el Esp32 se establece el uso de un **QoS2**
+---
+
+1.	El pulsador de la App “Muestreo LDR” realiza el inicio y finalización de la toma de muestras, 
+así mismo, el LED indicador en la App señala sus dos estados de medición.
+
+<div style="text-align: center;">
+  <video width="600" controls>
+    <source src="./imgs/Entregable3_Punto1.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de video.
+  </video>
+</div>
+
+2.	Control del brillo del LED Rojo en tiempo real con distintas posiciones configuradas en el Slider 
+de la App, así mismo, se visualiza la intensidad mientras se realiza capturas del valor del LDR.
+
+<div style="text-align: center;">
+  <video width="600" controls>
+    <source src="./imgs/Entregable3_Punto2.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de video.
+  </video>
+</div>
+
+3.	La curva obtenida en el Panel Line Graph con detención por botón y detención automática luego de 
+20 segundos. En el segundo paso se utilizó el script “subs_mensajePC2.sh” para grabar los valores del 
+sensor LDR recibidos.
+
+<div style="text-align: center;">
+  <video width="600" controls>
+    <source src="./imgs/Entregable3_Punto3.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de video.
+  </video>
+</div>
+
+### IoT MQTT PANEL
+
+En las siguientes imágenes se encuentran las capturas de la creación de los paneles: Brillo LED, Muestreo LDR, Estado Medición y Medición LDR. Se establece un QoS2 para los paneles de Brillo LED y Muestreo LDR.
+
+
+<div style="display: flex; justify-content: center; align-items: center; ">
+	<img src="./imgs/Entregable3_Panel1.png" alt="Entregable3_Panel1" width="300">
+	<img src="./imgs/Entregable3_Panel2.png" alt="Entregable3_Panel2" width="300">
+</div><br>
+
+<div style="display: flex; justify-content: center; align-items: center; ">
+	<img src="./imgs/Entregable3_Panel3.png" alt="Entregable3_Panel3" width="300">
+	<img src="./imgs/Entregable3_Panel4.png" alt="Entregable3_Panel4" width="300">
+</div>
+
+### LECTURAS RECIBIDAS (SENSOR LDR)
+
+Se realizó la publicación de datos a través de un servidor local MQTT Mosquitto, en el cual es publicado los valores obtenidos del sensor LDR a través del ADC1_6 del ESP32 con una frecuencia de muestreo de 10 Hz por 20 segundos, es decir, 200 muestras.
+
+
+<div style="display: flex; justify-content: center; align-items: center; ">
+	<img src="./imgs/Entregable3_Muestras.png" alt="Entregable3_Panel3" width="300">
+</div>
+
+### GRAFICA PYTHON CSV
+
+Se contrasta en la siguiente imagen que los valores recibidos y guardados en el archivo CSV tienen la misma forma que los valores recibidos en el Linegraph.
+
+<div style="display: flex; justify-content: center; align-items: center; ">
+	<img src="./imgs/Entregable3_Grabacion.png" alt="Entregable3_Panel3" width="800">
+</div>
+
+### SCRIPT DE MENSAJES RECIBIDOS (LINUX)
+
+El programa realizado en el ESP32 transmite un mensaje en formato JSON, no obstante, se recibe además el nombre del topic. Por lo tanto, es necesario poder separar y obtener el payload real donde se convertirá el mensaje JSON a CSV (separado por comas).
+
+<div style="display: flex; justify-content: center; align-items: center; ">
+	<img src="./imgs/Entregable3_ScriptSH.png" alt="Entregable3_Panel3" width="800">
+</div><br>
+<div style="display: flex; justify-content: center; align-items: center; ">
+	<img src="./imgs/Entregable3_CSV.png" alt="Entregable3_Panel3" width="300">
+</div>
+
+CÓDIGO DEL PROYECTO (ESP IDE)
+
+Por último, todos los archivos de la Práctica 2 se encuentran en el siguiente repositorio detallado en el README.md de la Práctica 2.
+
+  https://github.com/CarlosSHT/GitHub_MSE_SED/tree/main/Espressif_IDE/Practica_02
+  
+  https://github.com/CarlosSHT/GitHub_MSE_SED/blob/main/Espressif_IDE/Practica_02/README.md
+
